@@ -573,7 +573,7 @@ function buildReceiptPending(p){
   doc.setDrawColor(227,6,19); doc.setLineWidth(0.8);
   doc.setFillColor(45,20,15); doc.roundedRect(20,y,W-40,26,3,3,'FD');
   doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
-  doc.text('⚠ Date limite de solde : '+DATE_LIMITE,26,y+9);
+  doc.text('ATTENTION — Date limite de solde : '+DATE_LIMITE,26,y+9);
   doc.setTextColor(255,255,255); doc.setFont('helvetica','normal'); doc.setFontSize(9);
   doc.text("Le solde complet (20 000 FCFA) doit être versé avant cette date.",26,y+15);
   doc.text("Passé ce délai, la place sera automatiquement attribuée à quelqu'un d'autre.",26,y+20);
