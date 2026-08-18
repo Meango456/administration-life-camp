@@ -204,7 +204,19 @@ function confirmedCount(){ return people.filter(p=>p.status==='confirmed').lengt
 function pendingCount(){ return people.filter(p=>p.status==='pending').length; }
 function occupiedCount(){ return confirmedCount() + pendingCount(); }
 function remaining(){ return TOTAL_PLACES - occupiedCount(); }
-function fcfa(n){ return Number(n).toLocaleString('fr-FR')+' FCFA'; }
+
+// ✅ Formatage FCFA CORRIGÉ : on n'utilise plus toLocaleString('fr-FR') car
+// celui-ci insère une espace INSÉCABLE (caractère U+00A0) comme séparateur
+// de milliers. Cette espace n'est pas correctement gérée par la police
+// standard de jsPDF (Helvetica / WinAnsi), ce qui provoquait l'affichage
+// d'un caractère bizarre du type "2/0000" au lieu de "20 000" dans les PDF.
+// On formate donc manuellement avec une vraie espace normale, sûre à la
+// fois pour le HTML et pour jsPDF.
+function fcfa(n){
+  const num = Math.round(Number(n) || 0);
+  const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return formatted + ' FCFA';
+}
 
 async function loadPeople(){
   const { data, error } = await sb.from('inscriptions').select('*').order('created_at',{ascending:true});
