@@ -6,184 +6,184 @@
 <title>Life Camp Consecrated — Administration</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --jaune:#F5C63E; --orange:#E8691C; --orange-clair:#F08A3C;
-    --rouge:#E30613; --bleu:#1B8BA5; --noir:#0D0D0D; --vert:#5DCAA5; --wa:#25D366;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Poppins',sans-serif;background:#0D0D0D;color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;}
-  .app{width:100%;max-width:460px;background:#111;border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.6);}
+  :root{
+    --jaune:#F5C63E; --orange:#E8691C; --orange-clair:#F08A3C;
+    --rouge:#E30613; --bleu:#1B8BA5; --noir:#0D0D0D; --vert:#5DCAA5; --wa:#25D366;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Poppins',sans-serif;background:#0D0D0D;color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;}
+  .app{width:100%;max-width:460px;background:#111;border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.6);}
 
-  .header{padding:30px 24px 22px;text-align:center;background:radial-gradient(ellipse at 50% 0%, #2a1a0a 0%, #0D0D0D 72%);}
-  .brand{font-size:12px;letter-spacing:3px;color:var(--jaune);margin-bottom:6px;}
-  .title{font-size:42px;font-weight:700;line-height:1;}
-  .title .l{color:var(--jaune);} .title .c{color:var(--orange);}
-  .sub{font-style:italic;font-size:21px;margin-top:4px;color:#fff;}
-  .tags{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:12px;}
-  .tags span{padding:6px 13px;border-radius:6px;font-weight:600;}
-  .t-date{background:var(--bleu);} .t-lieu{background:#fff;color:var(--rouge);} .t-prix{background:var(--rouge);}
+  .header{padding:30px 24px 22px;text-align:center;background:radial-gradient(ellipse at 50% 0%, #2a1a0a 0%, #0D0D0D 72%);}
+  .brand{font-size:12px;letter-spacing:3px;color:var(--jaune);margin-bottom:6px;}
+  .title{font-size:42px;font-weight:700;line-height:1;}
+  .title .l{color:var(--jaune);} .title .c{color:var(--orange);}
+  .sub{font-style:italic;font-size:21px;margin-top:4px;color:#fff;}
+  .tags{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:12px;}
+  .tags span{padding:6px 13px;border-radius:6px;font-weight:600;}
+  .t-date{background:var(--bleu);} .t-lieu{background:#fff;color:var(--rouge);} .t-prix{background:var(--rouge);}
 
-  .counter{padding:22px 24px;text-align:center;border-bottom:1px solid #222;}
-  .counter .lbl{font-size:13px;color:#aaa;letter-spacing:1px;}
-  .counter .num{font-size:56px;font-weight:700;color:var(--jaune);line-height:1;}
-  .counter .tot{font-size:22px;color:#666;}
-  .bar{height:9px;background:#222;border-radius:5px;margin-top:12px;overflow:hidden;}
-  .bar>div{height:100%;background:linear-gradient(90deg,var(--jaune),var(--orange));border-radius:5px;transition:width .4s;}
-  .stats{font-size:12px;color:#888;margin-top:8px;}
-  .stats .note{display:block;color:#666;margin-top:3px;}
+  .counter{padding:22px 24px;text-align:center;border-bottom:1px solid #222;}
+  .counter .lbl{font-size:13px;color:#aaa;letter-spacing:1px;}
+  .counter .num{font-size:56px;font-weight:700;color:var(--jaune);line-height:1;}
+  .counter .tot{font-size:22px;color:#666;}
+  .bar{height:9px;background:#222;border-radius:5px;margin-top:12px;overflow:hidden;}
+  .bar>div{height:100%;background:linear-gradient(90deg,var(--jaune),var(--orange));border-radius:5px;transition:width .4s;}
+  .stats{font-size:12px;color:#888;margin-top:8px;}
+  .stats .note{display:block;color:#666;margin-top:3px;}
 
-  .panel{padding:24px;}
-  input,select{width:100%;padding:13px;background:#1a1a1a;border:1px solid #333;border-radius:9px;color:#fff;font-size:14px;font-family:inherit;margin-bottom:11px;}
-  input:focus,select:focus{outline:none;border-color:var(--orange);}
-  .btn-main{width:100%;padding:15px;background:linear-gradient(90deg,var(--jaune),var(--orange));border:none;border-radius:9px;color:#0D0D0D;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;}
+  .panel{padding:24px;}
+  input,select{width:100%;padding:13px;background:#1a1a1a;border:1px solid #333;border-radius:9px;color:#fff;font-size:14px;font-family:inherit;margin-bottom:11px;}
+  input:focus,select:focus{outline:none;border-color:var(--orange);}
+  .btn-main{width:100%;padding:15px;background:linear-gradient(90deg,var(--jaune),var(--orange));border:none;border-radius:9px;color:#0D0D0D;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;}
 
-  .admin-lock{text-align:center;}
-  .list-item{background:#1a1a1a;border:1px solid #3a3320;border-radius:11px;padding:13px;margin-bottom:9px;}
-  .list-item.ok{border-color:#2a4a2a;}
-  .li-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
-  .li-name{font-size:14px;font-weight:600;}
-  .li-meta{font-size:12px;color:#888;}
-  .li-brig{font-size:11px;color:#666;}
-  .li-acompte{font-size:11px;color:var(--vert);font-weight:600;margin-top:3px;}
-  .li-deadline{font-size:11px;color:var(--rouge);font-weight:600;margin-top:3px;}
-  .li-right{text-align:right;min-width:126px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-  .li-ref{font-size:13px;color:var(--jaune);font-weight:600;}
-  .li-ok{font-size:11px;color:var(--vert);margin:2px 0;}
-  .btn-val{background:var(--jaune);border:none;color:#0D0D0D;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
-  .btn-pdf{background:var(--bleu);border:none;color:#fff;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
-  .btn-wa{background:var(--wa);border:none;color:#08331e;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
-  .btn-share{background:var(--orange-clair);border:none;color:#0D0D0D;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
-  .btn-editall{background:#333;border:1px solid #555;color:#fff;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
-  .admin-bar{display:flex;gap:8px;margin-bottom:14px;}
-  .admin-bar button{flex:1;background:#1a1a1a;border:1px solid #333;color:#ccc;padding:9px;border-radius:8px;font-size:12px;font-family:inherit;cursor:pointer;}
-  .empty{text-align:center;color:#666;font-size:13px;padding:24px 0;}
-  .status-conn{text-align:center;font-size:11px;padding:6px;color:#666;}
-  .footer{padding:15px;text-align:center;font-size:11px;color:#555;border-top:1px solid #222;}
+  .admin-lock{text-align:center;}
+  .list-item{background:#1a1a1a;border:1px solid #3a3320;border-radius:11px;padding:13px;margin-bottom:9px;}
+  .list-item.ok{border-color:#2a4a2a;}
+  .li-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .li-name{font-size:14px;font-weight:600;}
+  .li-meta{font-size:12px;color:#888;}
+  .li-brig{font-size:11px;color:#666;}
+  .li-acompte{font-size:11px;color:var(--vert);font-weight:600;margin-top:3px;}
+  .li-deadline{font-size:11px;color:var(--rouge);font-weight:600;margin-top:3px;}
+  .li-right{text-align:right;min-width:126px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .li-ref{font-size:13px;color:var(--jaune);font-weight:600;}
+  .li-ok{font-size:11px;color:var(--vert);margin:2px 0;}
+  .btn-val{background:var(--jaune);border:none;color:#0D0D0D;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
+  .btn-pdf{background:var(--bleu);border:none;color:#fff;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
+  .btn-wa{background:var(--wa);border:none;color:#08331e;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
+  .btn-share{background:var(--orange-clair);border:none;color:#0D0D0D;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
+  .btn-editall{background:#333;border:1px solid #555;color:#fff;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
+  .admin-bar{display:flex;gap:8px;margin-bottom:14px;}
+  .admin-bar button{flex:1;background:#1a1a1a;border:1px solid #333;color:#ccc;padding:9px;border-radius:8px;font-size:12px;font-family:inherit;cursor:pointer;}
+  .empty{text-align:center;color:#666;font-size:13px;padding:24px 0;}
+  .status-conn{text-align:center;font-size:11px;padding:6px;color:#666;}
+  .footer{padding:15px;text-align:center;font-size:11px;color:#555;border-top:1px solid #222;}
 
-  .btn-edit-tel {
-    background: var(--orange);
-    border: none;
-    color: #0D0D0D;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    margin-left: 5px;
-  }
-  .li-tel {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    color: #aaa;
-  }
+  .btn-edit-tel {
+    background: var(--orange);
+    border: none;
+    color: #0D0D0D;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  .li-tel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #aaa;
+  }
 
-  /* ---- Modal d'édition complète ---- */
-  .modal-overlay{
-    display:none;
-    position:fixed; inset:0; background:rgba(0,0,0,.7);
-    z-index:1000; align-items:flex-start; justify-content:center;
-    overflow-y:auto; padding:16px;
-  }
-  .modal-overlay.open{ display:flex; }
-  .modal-box{
-    background:#141414; border:1px solid #333; border-radius:14px;
-    width:100%; max-width:420px; padding:20px; margin-top:24px;
-  }
-  .modal-title{font-size:16px; font-weight:700; color:var(--jaune); margin-bottom:14px;}
-  .modal-label{font-size:11px; color:#888; margin-bottom:4px; display:block; letter-spacing:.5px;}
-  .modal-actions{display:flex; gap:10px; margin-top:6px;}
-  .btn-cancel{flex:1; background:#222; border:1px solid #333; color:#ccc; padding:12px; border-radius:9px; font-size:14px; font-family:inherit; cursor:pointer;}
-  .btn-save{flex:1; background:linear-gradient(90deg,var(--jaune),var(--orange)); border:none; color:#0D0D0D; padding:12px; border-radius:9px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer;}
+  /* ---- Modal d'édition complète ---- */
+  .modal-overlay{
+    display:none;
+    position:fixed; inset:0; background:rgba(0,0,0,.7);
+    z-index:1000; align-items:flex-start; justify-content:center;
+    overflow-y:auto; padding:16px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:#141414; border:1px solid #333; border-radius:14px;
+    width:100%; max-width:420px; padding:20px; margin-top:24px;
+  }
+  .modal-title{font-size:16px; font-weight:700; color:var(--jaune); margin-bottom:14px;}
+  .modal-label{font-size:11px; color:#888; margin-bottom:4px; display:block; letter-spacing:.5px;}
+  .modal-actions{display:flex; gap:10px; margin-top:6px;}
+  .btn-cancel{flex:1; background:#222; border:1px solid #333; color:#ccc; padding:12px; border-radius:9px; font-size:14px; font-family:inherit; cursor:pointer;}
+  .btn-save{flex:1; background:linear-gradient(90deg,var(--jaune),var(--orange)); border:none; color:#0D0D0D; padding:12px; border-radius:9px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer;}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="header">
-    <div class="brand">BLOOM CENTRE YOTSAR</div>
-    <div class="title"><span class="l">LIFE</span> <span class="c">CAMP</span></div>
-    <div class="sub">Espace Administration</div>
-    <div class="tags">
-      <span class="t-date">10–12 SEPT. 2026</span>
-      <span class="t-lieu">CEFCA</span>
-    </div>
-  </div>
+  <div class="header">
+    <div class="brand">BLOOM CENTRE YOTSAR</div>
+    <div class="title"><span class="l">LIFE</span> <span class="c">CAMP</span></div>
+    <div class="sub">Espace Administration</div>
+    <div class="tags">
+      <span class="t-date">10–12 SEPT. 2026</span>
+      <span class="t-lieu">CEFCA</span>
+    </div>
+  </div>
 
-  <div class="counter">
-    <div class="lbl">PLACES DISPONIBLES</div>
-    <div><span class="num" id="remaining">—</span><span class="tot"> / 100</span></div>
-    <div class="bar"><div id="bar" style="width:100%"></div></div>
-    <div class="stats" id="stats">Chargement…</div>
-  </div>
+  <div class="counter">
+    <div class="lbl">PLACES DISPONIBLES</div>
+    <div><span class="num" id="remaining">—</span><span class="tot"> / 100</span></div>
+    <div class="bar"><div id="bar" style="width:100%"></div></div>
+    <div class="stats" id="stats">Chargement…</div>
+  </div>
 
-  <div class="panel">
-    <div class="admin-lock" id="adminLock">
-      <div style="font-size:13px;color:#aaa;margin-bottom:10px;">Espace réservé à l'organisation</div>
-      <input id="f-pass" type="password" placeholder="Code admin">
-      <button class="btn-main" onclick="login()">Entrer</button>
-    </div>
-    <div id="adminContent" style="display:none">
-      <div class="admin-bar">
-        <button onclick="filterList('all')">Tous</button>
-        <button onclick="filterList('pending')">En attente</button>
-        <button onclick="filterList('confirmed')">Confirmés</button>
-        <button onclick="exportCSV()">Exporter</button>
-      </div>
-      <div id="list"></div>
-    </div>
-  </div>
+  <div class="panel">
+    <div class="admin-lock" id="adminLock">
+      <div style="font-size:13px;color:#aaa;margin-bottom:10px;">Espace réservé à l'organisation</div>
+      <input id="f-pass" type="password" placeholder="Code admin">
+      <button class="btn-main" onclick="login()">Entrer</button>
+    </div>
+    <div id="adminContent" style="display:none">
+      <div class="admin-bar">
+        <button onclick="filterList('all')">Tous</button>
+        <button onclick="filterList('pending')">En attente</button>
+        <button onclick="filterList('confirmed')">Confirmés</button>
+        <button onclick="exportCSV()">Exporter</button>
+      </div>
+      <div id="list"></div>
+    </div>
+  </div>
 
-  <div class="status-conn" id="connStatus"></div>
-  <div class="footer">Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745</div>
+  <div class="status-conn" id="connStatus"></div>
+  <div class="footer">Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745</div>
 </div>
 
 <!-- Modal d'édition complète d'une inscription -->
 <div class="modal-overlay" id="editModal">
-  <div class="modal-box">
-    <div class="modal-title">Modifier l'inscription</div>
+  <div class="modal-box">
+    <div class="modal-title">Modifier l'inscription</div>
 
-    <label class="modal-label">Nom et prénoms</label>
-    <input id="e-nom" type="text">
+    <label class="modal-label">Nom et prénoms</label>
+    <input id="e-nom" type="text">
 
-    <label class="modal-label">Date de naissance</label>
-    <input id="e-date_naissance" type="date">
+    <label class="modal-label">Date de naissance</label>
+    <input id="e-date_naissance" type="date">
 
-    <label class="modal-label">Âge</label>
-    <input id="e-age" type="number" min="0">
+    <label class="modal-label">Âge</label>
+    <input id="e-age" type="number" min="0">
 
-    <label class="modal-label">Sexe</label>
-    <select id="e-sexe">
-      <option value="">—</option>
-      <option value="M">M</option>
-      <option value="F">F</option>
-    </select>
+    <label class="modal-label">Sexe</label>
+    <select id="e-sexe">
+      <option value="">—</option>
+      <option value="M">M</option>
+      <option value="F">F</option>
+    </select>
 
-    <label class="modal-label">Numéro de téléphone (avec le 0, ex: 0700000000)</label>
-    <input id="e-tel" type="text">
+    <label class="modal-label">Numéro de téléphone (avec le 0, ex: 0700000000)</label>
+    <input id="e-tel" type="text">
 
-    <label class="modal-label">Brigade</label>
-    <input id="e-brigade" type="text">
+    <label class="modal-label">Brigade</label>
+    <input id="e-brigade" type="text">
 
-    <label class="modal-label">Taille T-shirt</label>
-    <input id="e-taille_tshirt" type="text">
+    <label class="modal-label">Taille T-shirt</label>
+    <input id="e-taille_tshirt" type="text">
 
-    <label class="modal-label">Acompte annoncé (FCFA)</label>
-    <input id="e-acompte" type="number" min="0">
+    <label class="modal-label">Acompte annoncé (FCFA)</label>
+    <input id="e-acompte" type="number" min="0">
 
-    <label class="modal-label">Statut</label>
-    <select id="e-status">
-      <option value="pending">En attente</option>
-      <option value="confirmed">Confirmé</option>
-    </select>
+    <label class="modal-label">Statut</label>
+    <select id="e-status">
+      <option value="pending">En attente</option>
+      <option value="confirmed">Confirmé</option>
+    </select>
 
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeEditModal()">Annuler</button>
-      <button class="btn-save" onclick="saveEdit()">Enregistrer</button>
-    </div>
-  </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeEditModal()">Annuler</button>
+      <button class="btn-save" onclick="saveEdit()">Enregistrer</button>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -191,9 +191,9 @@
 <script>
 const SUPABASE_URL = "https://lytqjznkkqrizopsdqyt.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5dHFqem5ra3FyaXpvcHNkcXl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNDI1OTYsImV4cCI6MjEwMTcxODU5Nn0.-HdQkiFV3CRPCX-J-QWqjYQwuW9dMUm0oeLaVs-EbIs";
-const CODE_ADMIN   = "LifeCamp0108";
+const CODE_ADMIN   = "LifeCamp0108";
 const TOTAL_PLACES = 100;
-const DATE_LIMITE  = "05 septembre 2026";
+const DATE_LIMITE  = "05 septembre 2026";
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let people = [];
@@ -221,60 +221,60 @@ function remaining(){ return TOTAL_PLACES - occupiedCount(); }
 // On formate donc manuellement avec une vraie espace normale, sûre à la
 // fois pour le HTML et pour jsPDF.
 function fcfa(n){
-  const num = Math.round(Number(n) || 0);
-  const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return formatted + ' FCFA';
+  const num = Math.round(Number(n) || 0);
+  const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return formatted + ' FCFA';
 }
 
 async function loadPeople(){
-  const { data, error } = await sb.from('inscriptions').select('*').order('created_at',{ascending:true});
-  if(error){ document.getElementById('connStatus').textContent = "⚠️ Connexion à la base impossible — vérifie la configuration."; console.error(error); return; }
-  people = data || [];
-  render();
-  document.getElementById('connStatus').textContent = "";
+  const { data, error } = await sb.from('inscriptions').select('*').order('created_at',{ascending:true});
+  if(error){ document.getElementById('connStatus').textContent = "⚠️ Connexion à la base impossible — vérifie la configuration."; console.error(error); return; }
+  people = data || [];
+  render();
+  document.getElementById('connStatus').textContent = "";
 }
 
 function render(){
-  const rem = remaining();
-  document.getElementById('remaining').textContent = rem;
-  document.getElementById('bar').style.width = Math.max(0,(rem/TOTAL_PLACES*100)) + '%';
-  document.getElementById('stats').textContent = confirmedCount()+' confirmé'+(confirmedCount()>1?'s':'')+' · '+pendingWithDepositCount()+' en attente (avec acompte)'+(pendingNoDepositCount()>0 ? ' · '+pendingNoDepositCount()+' sans acompte (place non bloquée)' : '');
-  if(isAdmin) renderList();
+  const rem = remaining();
+  document.getElementById('remaining').textContent = rem;
+  document.getElementById('bar').style.width = Math.max(0,(rem/TOTAL_PLACES*100)) + '%';
+  document.getElementById('stats').textContent = confirmedCount()+' confirmé'+(confirmedCount()>1?'s':'')+' · '+pendingWithDepositCount()+' en attente (avec acompte)'+(pendingNoDepositCount()>0 ? ' · '+pendingNoDepositCount()+' sans acompte (place non bloquée)' : '');
+  if(isAdmin) renderList();
 }
 
 function renderList(){
-  const box = document.getElementById('list');
-  let arr = [...people];
-  if(currentFilter==='pending') arr = arr.filter(p=>p.status==='pending');
-  if(currentFilter==='confirmed') arr = arr.filter(p=>p.status==='confirmed');
-  const order = {pending:0,confirmed:1};
-  arr.sort((a,b)=> (order[a.status]-order[b.status]) || (a.id-b.id));
-  if(arr.length===0){ box.innerHTML = '<div class="empty">Aucune inscription.</div>'; return; }
-  box.innerHTML = arr.map(p=>{
-    const ok = p.status === 'confirmed';
-    return '<div class="list-item '+(ok?'ok':'')+'">'
-      +'<div class="li-top"><div>'
-      +'<div class="li-name">'+esc(p.nom)+'</div>'
-      +'<div class="li-meta">'+p.age+' ans · '+esc(p.sexe||'—')+'</div>'
-      +'<div class="li-tel">📱 '+esc(p.tel)+'</div>'
-      +(p.date_naissance?'<div class="li-brig">Né(e) le : '+fmtDate(p.date_naissance)+'</div>':'')
-      + '<div class="li-brig">Brigade : '+esc(p.brigade||'—')+(p.taille_tshirt?' · T-shirt : '+esc(p.taille_tshirt):'')+'</div>'
-      +(!ok && p.acompte ? '<div class="li-acompte">💰 Acompte annoncé : '+fcfa(p.acompte)+' (reste '+fcfa(20000-p.acompte)+')</div>':'')
-      +(!ok && !p.acompte ? '<div class="li-brig" style="color:#999">— Aucun acompte : place NON bloquée</div>':'')
-      +(!ok?'<div class="li-deadline">⏳ Solde à verser avant le '+DATE_LIMITE+'</div>':'')
-      +'</div>'
-      +'<div class="li-right"><div class="li-ref">'+p.ref+'</div>'
-      +(ok
-        ? '<div class="li-ok">✓ Confirmé</div><button class="btn-editall" onclick="openEditModal(\''+p.ref+'\')">✏️ Modifier</button><button class="btn-pdf" onclick="receipt(\''+p.ref+'\')">⬇ Reçu PDF</button><button class="btn-wa" onclick="sendWa(\''+p.ref+'\')">📱 WhatsApp</button><button class="btn-share" onclick="sharePdf(\''+p.ref+'\')">📤 Envoyer PDF</button>'
-        : '<button class="btn-val" onclick="validate(\''+p.ref+'\')">Valider paiement</button><button class="btn-editall" onclick="openEditModal(\''+p.ref+'\')">✏️ Modifier</button><button class="btn-pdf" onclick="receiptPending(\''+p.ref+'\')">⬇ Reçu acompte</button><button class="btn-wa" onclick="sendWa(\''+p.ref+'\')">📱 WhatsApp</button><button class="btn-share" onclick="sharePdf(\''+p.ref+'\')">📤 Envoyer PDF</button>')
-      +'</div></div></div>';
-  }).join('');
+  const box = document.getElementById('list');
+  let arr = [...people];
+  if(currentFilter==='pending') arr = arr.filter(p=>p.status==='pending');
+  if(currentFilter==='confirmed') arr = arr.filter(p=>p.status==='confirmed');
+  const order = {pending:0,confirmed:1};
+  arr.sort((a,b)=> (order[a.status]-order[b.status]) || (a.id-b.id));
+  if(arr.length===0){ box.innerHTML = '<div class="empty">Aucune inscription.</div>'; return; }
+  box.innerHTML = arr.map(p=>{
+    const ok = p.status === 'confirmed';
+    return '<div class="list-item '+(ok?'ok':'')+'">'
+      +'<div class="li-top"><div>'
+      +'<div class="li-name">'+esc(p.nom)+'</div>'
+      +'<div class="li-meta">'+p.age+' ans · '+esc(p.sexe||'—')+'</div>'
+      +'<div class="li-tel">📱 '+esc(p.tel)+'</div>'
+      +(p.date_naissance?'<div class="li-brig">Né(e) le : '+fmtDate(p.date_naissance)+'</div>':'')
+      + '<div class="li-brig">Brigade : '+esc(p.brigade||'—')+(p.taille_tshirt?' · T-shirt : '+esc(p.taille_tshirt):'')+'</div>'
+      +(!ok && p.acompte ? '<div class="li-acompte">💰 Acompte annoncé : '+fcfa(p.acompte)+' (reste '+fcfa(20000-p.acompte)+')</div>':'')
+      +(!ok && !p.acompte ? '<div class="li-brig" style="color:#999">— Aucun acompte : place NON bloquée</div>':'')
+      +(!ok?'<div class="li-deadline">⏳ Solde à verser avant le '+DATE_LIMITE+'</div>':'')
+      +'</div>'
+      +'<div class="li-right"><div class="li-ref">'+p.ref+'</div>'
+      +(ok
+        ? '<div class="li-ok">✓ Confirmé</div><button class="btn-editall" onclick="openEditModal(\''+p.ref+'\')">✏️ Modifier</button><button class="btn-pdf" onclick="receipt(\''+p.ref+'\')">⬇ Reçu PDF</button><button class="btn-wa" onclick="sendWa(\''+p.ref+'\')">📱 WhatsApp</button><button class="btn-share" onclick="sharePdf(\''+p.ref+'\')">📤 Envoyer PDF</button>'
+        : '<button class="btn-val" onclick="validate(\''+p.ref+'\')">Valider paiement</button><button class="btn-editall" onclick="openEditModal(\''+p.ref+'\')">✏️ Modifier</button><button class="btn-pdf" onclick="receiptPending(\''+p.ref+'\')">⬇ Reçu acompte</button><button class="btn-wa" onclick="sendWa(\''+p.ref+'\')">📱 WhatsApp</button><button class="btn-share" onclick="sharePdf(\''+p.ref+'\')">📤 Envoyer PDF</button>')
+      +'</div></div></div>';
+  }).join('');
 }
 
 // ✅ tel_norm = numéro nettoyé (chiffres uniquement, on garde le 0 initial)
 function normTel(s){
-  let d = String(s || '').replace(/\D/g, '');
-  return d;
+  let d = String(s || '').replace(/\D/g, '');
+  return d;
 }
 
 // ✅ Format international WhatsApp pour un numéro ivoirien à 10 chiffres.
@@ -282,87 +282,87 @@ function normTel(s){
 // du numéro : on ne le supprime pas, on préfixe simplement par 225.
 // Ex: 0700000000 (10 chiffres) -> 2250700000000 (13 chiffres)
 function waPhone(tel){
-  let d = String(tel || '').replace(/\D/g, '');
-  if (!d) return '';
-  // déjà au format complet 225 + 10 chiffres (13 chiffres au total)
-  if (d.startsWith('225') && d.length === 13) return d;
-  // ancien format bugué stocké sans le 0 (225 + 9 chiffres = 12) -> on le corrige
-  if (d.startsWith('225') && d.length === 12) return '225' + '0' + d.slice(3);
-  // numéro local à 10 chiffres (avec le 0) -> on préfixe simplement par 225
-  return '225' + d;
+  let d = String(tel || '').replace(/\D/g, '');
+  if (!d) return '';
+  // déjà au format complet 225 + 10 chiffres (13 chiffres au total)
+  if (d.startsWith('225') && d.length === 13) return d;
+  // ancien format bugué stocké sans le 0 (225 + 9 chiffres = 12) -> on le corrige
+  if (d.startsWith('225') && d.length === 12) return '225' + '0' + d.slice(3);
+  // numéro local à 10 chiffres (avec le 0) -> on préfixe simplement par 225
+  return '225' + d;
 }
 
 // ✅ Édition complète d'une inscription (toutes les infos)
 let editingRef = null;
 
 window.openEditModal = function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
-  editingRef = ref;
-  document.getElementById('e-nom').value = p.nom || '';
-  document.getElementById('e-date_naissance').value = p.date_naissance || '';
-  document.getElementById('e-age').value = p.age != null ? p.age : '';
-  document.getElementById('e-sexe').value = p.sexe || '';
-  document.getElementById('e-tel').value = p.tel || '';
-  document.getElementById('e-brigade').value = p.brigade || '';
-  document.getElementById('e-taille_tshirt').value = p.taille_tshirt || '';
-  document.getElementById('e-acompte').value = p.acompte != null ? p.acompte : '';
-  document.getElementById('e-status').value = p.status || 'pending';
-  document.getElementById('editModal').classList.add('open');
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
+  editingRef = ref;
+  document.getElementById('e-nom').value = p.nom || '';
+  document.getElementById('e-date_naissance').value = p.date_naissance || '';
+  document.getElementById('e-age').value = p.age != null ? p.age : '';
+  document.getElementById('e-sexe').value = p.sexe || '';
+  document.getElementById('e-tel').value = p.tel || '';
+  document.getElementById('e-brigade').value = p.brigade || '';
+  document.getElementById('e-taille_tshirt').value = p.taille_tshirt || '';
+  document.getElementById('e-acompte').value = p.acompte != null ? p.acompte : '';
+  document.getElementById('e-status').value = p.status || 'pending';
+  document.getElementById('editModal').classList.add('open');
 };
 
 window.closeEditModal = function(){
-  editingRef = null;
-  document.getElementById('editModal').classList.remove('open');
+  editingRef = null;
+  document.getElementById('editModal').classList.remove('open');
 };
 
 window.saveEdit = async function(){
-  if(!editingRef) return;
-  const p = people.find(x=>x.ref===editingRef);
-  if(!p) return;
+  if(!editingRef) return;
+  const p = people.find(x=>x.ref===editingRef);
+  if(!p) return;
 
-  const nom = document.getElementById('e-nom').value.trim();
-  const date_naissance = document.getElementById('e-date_naissance').value || null;
-  const ageVal = document.getElementById('e-age').value;
-  const age = ageVal === '' ? null : Number(ageVal);
-  const sexe = document.getElementById('e-sexe').value || null;
-  const telRaw = document.getElementById('e-tel').value.trim();
-  const brigade = document.getElementById('e-brigade').value.trim();
-  const taille_tshirt = document.getElementById('e-taille_tshirt').value.trim();
-  const acompteVal = document.getElementById('e-acompte').value;
-  const acompte = acompteVal === '' ? null : Number(acompteVal);
-  const status = document.getElementById('e-status').value;
+  const nom = document.getElementById('e-nom').value.trim();
+  const date_naissance = document.getElementById('e-date_naissance').value || null;
+  const ageVal = document.getElementById('e-age').value;
+  const age = ageVal === '' ? null : Number(ageVal);
+  const sexe = document.getElementById('e-sexe').value || null;
+  const telRaw = document.getElementById('e-tel').value.trim();
+  const brigade = document.getElementById('e-brigade').value.trim();
+  const taille_tshirt = document.getElementById('e-taille_tshirt').value.trim();
+  const acompteVal = document.getElementById('e-acompte').value;
+  const acompte = acompteVal === '' ? null : Number(acompteVal);
+  const status = document.getElementById('e-status').value;
 
-  if(!nom){ alert('Le nom ne peut pas être vide.'); return; }
+  if(!nom){ alert('Le nom ne peut pas être vide.'); return; }
 
-  const telNorm = normTel(telRaw);
-  if(telRaw && telNorm.length < 10){
-    alert('Numéro trop court. Veuillez entrer un numéro à 10 chiffres (ex: 0700000000)');
-    return;
-  }
+  const telNorm = normTel(telRaw);
+  if(telRaw && telNorm.length < 10){
+    alert('Numéro trop court. Veuillez entrer un numéro à 10 chiffres (ex: 0700000000)');
+    return;
+  }
 
-  const updateObj = {
-    nom, date_naissance, age, sexe,
-    tel: telRaw, tel_norm: telNorm,
-    brigade, taille_tshirt, acompte, status
-  };
+  const updateObj = {
+    nom, date_naissance, age, sexe,
+    tel: telRaw, tel_norm: telNorm,
+    brigade, taille_tshirt, acompte, status
+  };
 
-  // Si on confirme via cette fenêtre et que la date de confirmation n'existait pas encore
-  if(status === 'confirmed' && p.status !== 'confirmed'){
-    updateObj.confirmed_at = new Date().toISOString();
-  }
+  // Si on confirme via cette fenêtre et que la date de confirmation n'existait pas encore
+  if(status === 'confirmed' && p.status !== 'confirmed'){
+    updateObj.confirmed_at = new Date().toISOString();
+  }
 
-  const { error } = await sb.from('inscriptions').update(updateObj).eq('ref', editingRef);
-  if(error){
-    alert('❌ Erreur lors de la mise à jour : '+error.message);
-    console.error(error);
-    return;
-  }
+  const { error } = await sb.from('inscriptions').update(updateObj).eq('ref', editingRef);
+  if(error){
+    alert('❌ Erreur lors de la mise à jour : '+error.message);
+    console.error(error);
+    return;
+  }
 
-  Object.assign(p, updateObj);
-  closeEditModal();
-  render();
-  alert('✅ Inscription mise à jour !');
+  Object.assign(p, updateObj);
+  closeEditModal();
+  render();
+  alert('✅ Inscription mise à jour !');
 };
 
 function esc(s){ return String(s==null?'':s).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
@@ -370,284 +370,283 @@ function fmtDate(iso){ if(!iso) return '—'; const [a,m,j]=iso.split('-'); retu
 function val(id){ return document.getElementById(id).value.trim(); }
 
 window.login = function(){
-  if(val('f-pass')===CODE_ADMIN){
-    isAdmin=true;
-    document.getElementById('adminLock').style.display='none';
-    document.getElementById('adminContent').style.display='block';
-    renderList();
-  } else alert('Code incorrect.');
+  if(val('f-pass')===CODE_ADMIN){
+    isAdmin=true;
+    document.getElementById('adminLock').style.display='none';
+    document.getElementById('adminContent').style.display='block';
+    renderList();
+  } else alert('Code incorrect.');
 };
 
 window.filterList = function(f){ currentFilter=f; renderList(); };
 
 window.validate = async function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
-  if(!confirm('Confirmer le paiement de '+p.nom+' ('+ref+') ?')) return;
-  const confirmedAt = new Date().toISOString();
-  const { error } = await sb.from('inscriptions').update({ status:'confirmed', confirmed_at:confirmedAt }).eq('ref',ref);
-  if(error){ alert('Erreur lors de la validation.'); console.error(error); return; }
-  p.status='confirmed'; p.confirmed_at=confirmedAt;
-  render();
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
+  if(!confirm('Confirmer le paiement de '+p.nom+' ('+ref+') ?')) return;
+  const confirmedAt = new Date().toISOString();
+  const { error } = await sb.from('inscriptions').update({ status:'confirmed', confirmed_at:confirmedAt }).eq('ref',ref);
+  if(error){ alert('Erreur lors de la validation.'); console.error(error); return; }
+  p.status='confirmed'; p.confirmed_at=confirmedAt;
+  render();
 };
 
 window.exportCSV = function(){
-  const head = ['Ref','Nom','Date naissance','Age','Sexe','Numero','Brigade','Taille','Acompte','Statut'];
-  const rows = people.map(p=>[p.ref,p.nom,fmtDate(p.date_naissance),p.age,p.sexe,p.tel,p.brigade,p.taille_tshirt,(p.acompte||''),p.status==='confirmed'?'Confirmé':'En attente']);
-  const csv = [head, ...rows].map(r=>r.map(c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"').join(',')).join('\n');
-  const blob = new Blob(["\ufeff"+csv],{type:'text/csv;charset=utf-8;'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='LifeCamp_inscriptions.csv'; a.click();
+  const head = ['Ref','Nom','Date naissance','Age','Sexe','Numero','Brigade','Taille','Acompte','Statut'];
+  const rows = people.map(p=>[p.ref,p.nom,fmtDate(p.date_naissance),p.age,p.sexe,p.tel,p.brigade,p.taille_tshirt,(p.acompte||''),p.status==='confirmed'?'Confirmé':'En attente']);
+  const csv = [head, ...rows].map(r=>r.map(c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob = new Blob(["\ufeff"+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='LifeCamp_inscriptions.csv'; a.click();
 };
 
 // ---------- WhatsApp Messages ----------
 function waMessageConfirmed(p){
-  return "*Inscription confirmée – Life Camp Consecrated*\n\n"
-    +"Bonjour "+p.nom+",\n\n"
-    +"Ta place pour le *Life Camp Consecrated* est confirmée !\n\n"
-    +"- Référence : "+p.ref+"\n"
-    +"- Dates : 10 au 12 septembre 2026\n"
-    +"- Lieu : CEFCA\n"
-    +(p.brigade?"- Brigade : "+p.brigade+"\n":"")
-    +(p.taille_tshirt?"- Taille t-shirt : "+p.taille_tshirt+"\n":"")
-    +"\nMontant réglé : 20 000 FCFA\n\n"
-    +"À très bientôt !\n"
-    +"Vases d'Honneur · Centre Yotsar Yopougon";
+  return "*Inscription confirmée – Life Camp Consecrated*\n\n"
+    +"Bonjour "+p.nom+",\n\n"
+    +"Ta place pour le *Life Camp Consecrated* est confirmée !\n\n"
+    +"- Référence : "+p.ref+"\n"
+    +"- Dates : 10 au 12 septembre 2026\n"
+    +"- Lieu : CEFCA\n"
+    +(p.brigade?"- Brigade : "+p.brigade+"\n":"")
+    +(p.taille_tshirt?"- Taille t-shirt : "+p.taille_tshirt+"\n":"")
+    +"\nMontant réglé : 20 000 FCFA\n\n"
+    +"À très bientôt !\n"
+    +"Vases d'Honneur · Centre Yotsar Yopougon";
 }
 
 function waMessagePending(p){
-  return "*Préinscription enregistrée – Life Camp Consecrated*\n\n"
-    +"Bonjour "+p.nom+",\n\n"
-    +"Ta préinscription au *Life Camp Consecrated* est bien enregistrée avec la référence "+p.ref+".\n\n"
-    +(p.acompte
-      ? "- Acompte annoncé : "+fcfa(p.acompte)+"\n- Reste à payer : "+fcfa(20000-p.acompte)+"\n\n"
-      : "")
-    +"- Il te reste à solder le paiement complet (20 000 FCFA) avant le *"+DATE_LIMITE+"*.\n"
-    +"Passé ce délai, ta place pourra être attribuée à quelqu'un d'autre.\n\n"
-    +"- Dates : 10 au 12 septembre 2026\n"
-    +"- Lieu : CEFCA\n\n"
-    +"Merci d'envoyer la capture de ton paiement dès que possible au (+225) 07 5767 6745.\n"
-    +"Vases d'Honneur · Centre Yotsar Yopougon";
+  return "*Préinscription enregistrée – Life Camp Consecrated*\n\n"
+    +"Bonjour "+p.nom+",\n\n"
+    +"Ta préinscription au *Life Camp Consecrated* est bien enregistrée avec la référence "+p.ref+".\n\n"
+    +(p.acompte
+      ? "- Acompte annoncé : "+fcfa(p.acompte)+"\n- Reste à payer : "+fcfa(20000-p.acompte)+"\n\n"
+      : "")
+    +"- Il te reste à solder le paiement complet (20 000 FCFA) avant le *"+DATE_LIMITE+"*.\n"
+    +"Passé ce délai, ta place pourra être attribuée à quelqu'un d'autre.\n\n"
+    +"- Dates : 10 au 12 septembre 2026\n"
+    +"- Lieu : CEFCA\n\n"
+    +"Merci d'envoyer la capture de ton paiement dès que possible au (+225) 07 5767 6745.\n"
+    +"Vases d'Honneur · Centre Yotsar Yopougon";
 }
 
 window.sendWa = function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
 
-  let phone = waPhone(p.tel);
+  let phone = waPhone(p.tel);
 
-  if (phone.length !== 13) {
-    alert('⚠️ Le numéro de téléphone semble incomplet ou invalide : ' + p.tel + '\n\nUn numéro ivoirien doit avoir 10 chiffres (ex: 0700000000). Modifie-le via le bouton ✏️ Modifier avant d\'envoyer le message.');
-    return;
-  }
+  if (phone.length !== 13) {
+    alert('⚠️ Le numéro de téléphone semble incomplet ou invalide : ' + p.tel + '\n\nUn numéro ivoirien doit avoir 10 chiffres (ex: 0700000000). Modifie-le via le bouton ✏️ Modifier avant d\'envoyer le message.');
+    return;
+  }
 
-  const msg = p.status==='confirmed' ? waMessageConfirmed(p) : waMessagePending(p);
-  const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+  const msg = p.status==='confirmed' ? waMessageConfirmed(p) : waMessagePending(p);
+  const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
 
-  console.log('📱 WhatsApp pour ' + p.nom + ' : ' + phone);
-  window.open(url, '_blank');
+  console.log('📱 WhatsApp pour ' + p.nom + ' : ' + phone);
+  window.open(url, '_blank');
 };
 
 // ---------- Construction du PDF confirmé ----------
 function buildReceiptConfirmed(p){
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({unit:'mm',format:'a4'});
-  const W=210;
-  const d = p.confirmed_at ? new Date(p.confirmed_at) : new Date();
-  const dateStr = d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({unit:'mm',format:'a4'});
+  const W=210;
+  const d = p.confirmed_at ? new Date(p.confirmed_at) : new Date();
+  const dateStr = d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
 
-  doc.setFillColor(13,13,13); doc.rect(0,0,W,45,'F');
-  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
-  doc.text('BLOOM CENTRE YOTSAR',20,17);
-  doc.setFontSize(30); doc.text('LIFE',20,32);
-  doc.setTextColor(232,105,28); doc.text('CAMP',44,32);
-  doc.setFont('helvetica','italic'); doc.setFontSize(13); doc.setTextColor(255,255,255);
-  doc.text('Consecrated',82,31);
-  doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(245,198,62);
-  doc.text('REÇU DE PAIEMENT',W-20,20,{align:'right'});
-  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(200,200,200);
-  doc.text('N° '+p.ref,W-20,27,{align:'right'});
+  doc.setFillColor(13,13,13); doc.rect(0,0,W,45,'F');
+  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('BLOOM CENTRE YOTSAR',20,17);
+  doc.setFontSize(30); doc.text('LIFE',20,32);
+  doc.setTextColor(232,105,28); doc.text('CAMP',44,32);
+  doc.setFont('helvetica','italic'); doc.setFontSize(13); doc.setTextColor(255,255,255);
+  doc.text('Consecrated',82,31);
+  doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(245,198,62);
+  doc.text('REÇU DE PAIEMENT',W-20,20,{align:'right'});
+  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(200,200,200);
+  doc.text('N° '+p.ref,W-20,27,{align:'right'});
 
-  doc.setDrawColor(232,105,28); doc.setLineWidth(1); doc.line(20,52,W-20,52);
-  doc.setTextColor(60,60,60); doc.setFontSize(10); doc.setFont('helvetica','normal');
-  doc.text('Reçu émis le '+dateStr,20,62);
+  doc.setDrawColor(232,105,28); doc.setLineWidth(1); doc.line(20,52,W-20,52);
+  doc.setTextColor(60,60,60); doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Reçu émis le '+dateStr,20,62);
 
-  let y=78;
-  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(13,13,13);
-  doc.text('Participant',20,y); y+=4;
-  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=10;
-  function row(label,v){
-    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(120,120,120);
-    doc.text(label,20,y);
-    doc.setFont('helvetica','bold'); doc.setTextColor(30,30,30); doc.setFontSize(11);
-    doc.text(String(v),75,y); y+=10;
-  }
-  row('Nom et prénoms',p.nom);
-  if(p.date_naissance) row('Date de naissance',fmtDate(p.date_naissance)+'  ('+p.age+' ans)');
-  else row('Âge',p.age+' ans');
-  row('Sexe',p.sexe);
-  row('Numéro',p.tel);
-  row('Brigade',p.brigade);
-  if(p.taille_tshirt) row('Taille t-shirt',p.taille_tshirt);
+  let y=78;
+  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(13,13,13);
+  doc.text('Participant',20,y); y+=4;
+  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=10;
+  function row(label,v){
+    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(120,120,120);
+    doc.text(label,20,y);
+    doc.setFont('helvetica','bold'); doc.setTextColor(30,30,30); doc.setFontSize(11);
+    doc.text(String(v),75,y); y+=10;
+  }
+  row('Nom et prénoms',p.nom);
+  if(p.date_naissance) row('Date de naissance',fmtDate(p.date_naissance)+'  ('+p.age+' ans)');
+  else row('Âge',p.age+' ans');
+  row('Sexe',p.sexe);
+  row('Numéro',p.tel);
+  row('Brigade',p.brigade);
+  if(p.taille_tshirt) row('Taille t-shirt',p.taille_tshirt);
 
-  y+=6;
-  doc.setFillColor(245,198,62); doc.roundedRect(20,y,W-40,26,3,3,'F');
-  doc.setTextColor(13,13,13); doc.setFont('helvetica','normal'); doc.setFontSize(11);
-  doc.text('Montant réglé — Participation Life Camp',26,y+10);
-  doc.setFont('helvetica','bold'); doc.setFontSize(20);
-  doc.text('20 000 FCFA',26,y+21);
-  doc.setFontSize(10); doc.setFont('helvetica','normal');
-  doc.text('Wave / Orange Money',W-26,y+10,{align:'right'});
-  doc.setFont('helvetica','bold'); doc.setFontSize(12);
-  doc.text('PAYÉ',W-26,y+21,{align:'right'});
-  y+=40;
+  y+=6;
+  doc.setFillColor(245,198,62); doc.roundedRect(20,y,W-40,26,3,3,'F');
+  doc.setTextColor(13,13,13); doc.setFont('helvetica','normal'); doc.setFontSize(11);
+  doc.text('Montant réglé — Participation Life Camp',26,y+10);
+  doc.setFont('helvetica','bold'); doc.setFontSize(20);
+  doc.text('20 000 FCFA',26,y+21);
+  doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Wave / Orange Money',W-26,y+10,{align:'right'});
+  doc.setFont('helvetica','bold'); doc.setFontSize(12);
+  doc.text('PAYÉ',W-26,y+21,{align:'right'});
+  y+=40;
 
-  doc.setDrawColor(93,202,165); doc.setLineWidth(0.8);
-  doc.setFillColor(230,247,238); doc.roundedRect(20,y,W-40,18,3,3,'FD');
-  doc.setTextColor(15,110,86); doc.setFont('helvetica','bold'); doc.setFontSize(11);
-  doc.text('Inscription confirmée',26,y+8);
-  doc.setFont('helvetica','normal'); doc.setFontSize(9);
-  doc.text("Ta place au Life Camp Consecrated est réservée. Rendez-vous du 10 au 12 sept. 2026 au CEFCA.",26,y+14);
-  y+=30;
+  doc.setDrawColor(93,202,165); doc.setLineWidth(0.8);
+  doc.setFillColor(230,247,238); doc.roundedRect(20,y,W-40,18,3,3,'FD');
+  doc.setTextColor(15,110,86); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('Inscription confirmée',26,y+8);
+  doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text("Ta place au Life Camp Consecrated est réservée. Rendez-vous du 10 au 12 sept. 2026 au CEFCA.",26,y+14);
+  y+=30;
 
-  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=8;
-  doc.setTextColor(130,130,130); doc.setFontSize(8); doc.setFont('helvetica','normal');
-  doc.text("Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745",W/2,y,{align:'center'});
-  doc.text("Ce reçu atteste du règlement de la participation. À conserver.",W/2,y+5,{align:'center'});
+  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=8;
+  doc.setTextColor(130,130,130); doc.setFontSize(8); doc.setFont('helvetica','normal');
+  doc.text("Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745",W/2,y,{align:'center'});
+  doc.text("Ce reçu atteste du règlement de la participation. À conserver.",W/2,y+5,{align:'center'});
 
-  return doc;
+  return doc;
 }
 
 window.receipt = function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
-  const doc = buildReceiptConfirmed(p);
-  doc.save('Recu_LifeCamp_'+p.ref+'_'+String(p.nom).replace(/\s+/g,'_')+'.pdf');
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
+  const doc = buildReceiptConfirmed(p);
+  doc.save('Recu_LifeCamp_'+p.ref+'_'+String(p.nom).replace(/\s+/g,'_')+'.pdf');
 };
 
 // ---------- Construction du PDF en attente (acompte) ----------
 function buildReceiptPending(p){
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({unit:'mm',format:'a4'});
-  const W=210;
-  const d = p.created_at ? new Date(p.created_at) : new Date();
-  const dateStr = d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
-  const montantAcompte = p.acompte ? Number(p.acompte) : null;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({unit:'mm',format:'a4'});
+  const W=210;
+  const d = p.created_at ? new Date(p.created_at) : new Date();
+  const dateStr = d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+  const montantAcompte = p.acompte ? Number(p.acompte) : null;
 
-  doc.setFillColor(13,13,13); doc.rect(0,0,W,45,'F');
-  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
-  doc.text('BLOOM CENTRE YOTSAR',20,17);
-  doc.setFontSize(30); doc.text('LIFE',20,32);
-  doc.setTextColor(232,105,28); doc.text('CAMP',44,32);
-  doc.setFont('helvetica','italic'); doc.setFontSize(13); doc.setTextColor(255,255,255);
-  doc.text('Consecrated',82,31);
-  doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(245,198,62);
-  doc.text('REÇU D\u2019ACOMPTE',W-20,20,{align:'right'});
-  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(200,200,200);
-  doc.text('N° '+p.ref,W-20,27,{align:'right'});
+  doc.setFillColor(13,13,13); doc.rect(0,0,W,45,'F');
+  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('BLOOM CENTRE YOTSAR',20,17);
+  doc.setFontSize(30); doc.text('LIFE',20,32);
+  doc.setTextColor(232,105,28); doc.text('CAMP',44,32);
+  doc.setFont('helvetica','italic'); doc.setFontSize(13); doc.setTextColor(255,255,255);
+  doc.text('Consecrated',82,31);
+  doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(245,198,62);
+  doc.text('REÇU D\u2019ACOMPTE',W-20,20,{align:'right'});
+  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(200,200,200);
+  doc.text('N° '+p.ref,W-20,27,{align:'right'});
 
-  doc.setDrawColor(232,105,28); doc.setLineWidth(1); doc.line(20,52,W-20,52);
-  doc.setTextColor(60,60,60); doc.setFontSize(10); doc.setFont('helvetica','normal');
-  doc.text('Reçu émis le '+dateStr,20,62);
+  doc.setDrawColor(232,105,28); doc.setLineWidth(1); doc.line(20,52,W-20,52);
+  doc.setTextColor(60,60,60); doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Reçu émis le '+dateStr,20,62);
 
-  let y=78;
-  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(13,13,13);
-  doc.text('Participant',20,y); y+=4;
-  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=10;
-  function row(label,v){
-    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(120,120,120);
-    doc.text(label,20,y);
-    doc.setFont('helvetica','bold'); doc.setTextColor(30,30,30); doc.setFontSize(11);
-    doc.text(String(v),75,y); y+=10;
-  }
-  row('Nom et prénoms',p.nom);
-  if(p.date_naissance) row('Date de naissance',fmtDate(p.date_naissance)+'  ('+p.age+' ans)');
-  else row('Âge',p.age+' ans');
-  row('Sexe',p.sexe);
-  row('Numéro',p.tel);
-  row('Brigade',p.brigade);
-  if(p.taille_tshirt) row('Taille t-shirt',p.taille_tshirt);
+  let y=78;
+  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(13,13,13);
+  doc.text('Participant',20,y); y+=4;
+  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=10;
+  function row(label,v){
+    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(120,120,120);
+    doc.text(label,20,y);
+    doc.setFont('helvetica','bold'); doc.setTextColor(30,30,30); doc.setFontSize(11);
+    doc.text(String(v),75,y); y+=10;
+  }
+  row('Nom et prénoms',p.nom);
+  if(p.date_naissance) row('Date de naissance',fmtDate(p.date_naissance)+'  ('+p.age+' ans)');
+  else row('Âge',p.age+' ans');
+  row('Sexe',p.sexe);
+  row('Numéro',p.tel);
+  row('Brigade',p.brigade);
+  if(p.taille_tshirt) row('Taille t-shirt',p.taille_tshirt);
 
-  y+=6;
-  doc.setFillColor(240,138,60); doc.roundedRect(20,y,W-40,26,3,3,'F');
-  doc.setTextColor(13,13,13); doc.setFont('helvetica','normal'); doc.setFontSize(11);
-  doc.text('Acompte reçu — Préinscription Life Camp',26,y+10);
-  doc.setFont('helvetica','bold'); doc.setFontSize(15);
-  doc.text(montantAcompte ? fcfa(montantAcompte)+' versés' : 'Place bloquée (min. 5 000 FCFA)',26,y+21);
-  doc.setFontSize(10); doc.setFont('helvetica','normal');
-  doc.text('Reste à régler',W-26,y+10,{align:'right'});
-  doc.setFont('helvetica','bold'); doc.setFontSize(14);
-  doc.text(montantAcompte ? fcfa(20000-montantAcompte) : '20 000 FCFA',W-26,y+21,{align:'right'});
-  y+=40;
+  y+=6;
+  doc.setFillColor(240,138,60); doc.roundedRect(20,y,W-40,26,3,3,'F');
+  doc.setTextColor(13,13,13); doc.setFont('helvetica','normal'); doc.setFontSize(11);
+  doc.text('Acompte reçu — Préinscription Life Camp',26,y+10);
+  doc.setFont('helvetica','bold'); doc.setFontSize(15);
+  doc.text(montantAcompte ? fcfa(montantAcompte)+' versés' : 'Place bloquée (min. 5 000 FCFA)',26,y+21);
+  doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Reste à régler',W-26,y+10,{align:'right'});
+  doc.setFont('helvetica','bold'); doc.setFontSize(14);
+  doc.text(montantAcompte ? fcfa(20000-montantAcompte) : '20 000 FCFA',W-26,y+21,{align:'right'});
+  y+=40;
 
-  doc.setDrawColor(227,6,19); doc.setLineWidth(0.8);
-  doc.setFillColor(45,20,15); doc.roundedRect(20,y,W-40,26,3,3,'FD');
-  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
-  doc.text('ATTENTION — Date limite de solde : '+DATE_LIMITE,26,y+9);
-  doc.setTextColor(255,255,255); doc.setFont('helvetica','normal'); doc.setFontSize(9);
-  doc.text("Le solde complet (20 000 FCFA) doit être versé avant cette date.",26,y+15);
-  doc.text("Passé ce délai, la place sera automatiquement attribuée à quelqu'un d'autre.",26,y+20);
-  y+=36;
+  doc.setDrawColor(227,6,19); doc.setLineWidth(0.8);
+  doc.setFillColor(45,20,15); doc.roundedRect(20,y,W-40,26,3,3,'FD');
+  doc.setTextColor(245,198,62); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('ATTENTION — Date limite de solde : '+DATE_LIMITE,26,y+9);
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text("Le solde complet (20 000 FCFA) doit être versé avant cette date.",26,y+15);
+  doc.text("Passé ce délai, la place sera automatiquement attribuée à quelqu'un d'autre.",26,y+20);
+  y+=36;
 
-  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=8;
-  doc.setTextColor(130,130,130); doc.setFontSize(8); doc.setFont('helvetica','normal');
-  doc.text("Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745",W/2,y,{align:'center'});
-  doc.text("Ce reçu atteste de la réception d'un acompte. Il ne vaut pas confirmation définitive.",W/2,y+5,{align:'center'});
+  doc.setDrawColor(220,220,220); doc.setLineWidth(0.3); doc.line(20,y,W-20,y); y+=8;
+  doc.setTextColor(130,130,130); doc.setFontSize(8); doc.setFont('helvetica','normal');
+  doc.text("Vases d'Honneur · Centre Yotsar Yopougon · (+225) 07 5767 6745",W/2,y,{align:'center'});
+  doc.text("Ce reçu atteste de la réception d'un acompte. Il ne vaut pas confirmation définitive.",W/2,y+5,{align:'center'});
 
-  return doc;
+  return doc;
 }
 
 window.receiptPending = function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
-  const doc = buildReceiptPending(p);
-  doc.save('Acompte_LifeCamp_'+p.ref+'_'+String(p.nom).replace(/\s+/g,'_')+'.pdf');
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
+  const doc = buildReceiptPending(p);
+  doc.save('Acompte_LifeCamp_'+p.ref+'_'+String(p.nom).replace(/\s+/g,'_')+'.pdf');
 };
 
 // ---------- Envoi direct du PDF (partage natif, avec repli sur téléchargement) ----------
 window.sharePdf = async function(ref){
-  const p = people.find(x=>x.ref===ref);
-  if(!p) return;
+  const p = people.find(x=>x.ref===ref);
+  if(!p) return;
 
-  const doc = p.status==='confirmed' ? buildReceiptConfirmed(p) : buildReceiptPending(p);
-  const filename = (p.status==='confirmed' ? 'Recu_LifeCamp_' : 'Acompte_LifeCamp_') + p.ref + '_' + String(p.nom).replace(/\s+/g,'_') + '.pdf';
-  const msg = p.status==='confirmed' ? waMessageConfirmed(p) : waMessagePending(p);
+  const doc = p.status==='confirmed' ? buildReceiptConfirmed(p) : buildReceiptPending(p);
+  const filename = (p.status==='confirmed' ? 'Recu_LifeCamp_' : 'Acompte_LifeCamp_') + p.ref + '_' + String(p.nom).replace(/\s+/g,'_') + '.pdf';
+  const msg = p.status==='confirmed' ? waMessageConfirmed(p) : waMessagePending(p);
 
-  let file;
-  try{
-    const blob = doc.output('blob');
-    file = new File([blob], filename, {type:'application/pdf'});
-  }catch(err){
-    alert('Erreur lors de la génération du PDF : '+err.message);
-    return;
-  }
+  let file;
+  try{
+    const blob = doc.output('blob');
+    file = new File([blob], filename, {type:'application/pdf'});
+  }catch(err){
+    alert('Erreur lors de la génération du PDF : '+err.message);
+    return;
+  }
 
-  if(navigator.canShare && navigator.canShare({files:[file]})){
-    try{
-      await navigator.share({ files:[file], title:'Reçu Life Camp - '+p.ref, text: msg });
-      return;
-    }catch(err){
-      if(err.name === 'AbortError') return; // l'utilisateur a annulé le partage
-      console.error(err);
-      // en cas d'échec du partage, on bascule sur le repli ci-dessous
-    }
-  }
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({ files:[file], title:'Reçu Life Camp - '+p.ref, text: msg });
+      return;
+    }catch(err){
+      if(err.name === 'AbortError') return; // l'utilisateur a annulé le partage
+      console.error(err);
+      // en cas d'échec du partage, on bascule sur le repli ci-dessous
+    }
+  }
 
-  // Repli : téléchargement du PDF + ouverture de WhatsApp avec le message
-  doc.save(filename);
-  alert("Le partage direct n'est pas disponible sur cet appareil.\n\nLe PDF a été téléchargé : ajoute-le en pièce jointe dans la conversation WhatsApp qui va s'ouvrir.");
-  const phone = waPhone(p.tel);
-  if(phone.length===13){
-    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg), '_blank');
-  }
+  // Repli : téléchargement du PDF + ouverture de WhatsApp avec le message
+  doc.save(filename);
+  alert("Le partage direct n'est pas disponible sur cet appareil.\n\nLe PDF a été téléchargé : ajoute-le en pièce jointe dans la conversation WhatsApp qui va s'ouvrir.");
+  const phone = waPhone(p.tel);
+  if(phone.length===13){
+    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg), '_blank');
+  }
 };
 
 // ✅ Écoute des changements en temps réel
 sb.channel('inscriptions-live')
-  .on('postgres_changes',{event:'*',schema:'public',table:'inscriptions'}, loadPeople)
-  .subscribe();
+  .on('postgres_changes',{event:'*',schema:'public',table:'inscriptions'}, loadPeople)
+  .subscribe();
 
 loadPeople();
 </script>
 </body>
 </html>
- ya des cases comme confirme en attente exporter tous , ajoute une case acompte qui va prendre en compte ceux qui ont payer une avance pour faCILITé LES CHOSES PARCE QUE SUR 100 PERSONNES SI ON DOIS CHERCHER SA VA NOUS FATIGUER 
