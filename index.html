@@ -432,52 +432,11 @@ window.sendWa = function(ref){
   }
 
   const msg = p.status==='confirmed' ? waMessageConfirmed(p) : waMessagePending(p);
+  const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
 
-  // ✅ On copie le message tel quel (UTF-8 natif) dans le presse-papiers,
-  // puis on ouvre juste la conversation SANS passer le texte dans l'URL.
-  // Ça évite complètement le bug d'encodage/décodage d'URL qui cassait
-  // les emojis sur certaines plateformes (surtout PC) : le texte n'a
-  // plus jamais besoin d'être encodé puis redécodé, il est collé tel quel.
-  const url = 'https://wa.me/' + phone;
-
-  copyToClipboard(msg).then(ok=>{
-    console.log('📱 WhatsApp pour ' + p.nom + ' : ' + phone);
-    window.open(url, '_blank');
-    if(ok){
-      alert('✅ Message copié dans le presse-papiers !\n\nColle-le avec Ctrl+V (ou appui long > Coller) dans la conversation WhatsApp qui vient de s\'ouvrir.');
-    } else {
-      alert('⚠️ Impossible de copier automatiquement le message.\n\nCopie-le manuellement depuis l\'application avant de l\'envoyer.');
-    }
-  });
+  console.log('📱 WhatsApp pour ' + p.nom + ' : ' + phone);
+  window.open(url, '_blank');
 };
-
-// Copie du texte dans le presse-papiers, avec repli si l'API moderne n'est pas disponible.
-async function copyToClipboard(text){
-  try{
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  }catch(err){
-    console.error('Erreur clipboard API :', err);
-  }
-  // Repli pour anciens navigateurs / contextes non sécurisés
-  try{
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    const success = document.execCommand('copy');
-    document.body.removeChild(ta);
-    return success;
-  }catch(err){
-    console.error('Erreur repli clipboard :', err);
-    return false;
-  }
-}
 
 // ---------- Construction du PDF confirmé ----------
 function buildReceiptConfirmed(p){
@@ -664,17 +623,12 @@ window.sharePdf = async function(ref){
     }
   }
 
-  // Repli : téléchargement du PDF + copie du message + ouverture de WhatsApp
+  // Repli : téléchargement du PDF + ouverture de WhatsApp avec le message
   doc.save(filename);
+  alert("Le partage direct n'est pas disponible sur cet appareil.\n\nLe PDF a été téléchargé : ajoute-le en pièce jointe dans la conversation WhatsApp qui va s'ouvrir.");
   const phone = waPhone(p.tel);
-  const ok = await copyToClipboard(msg);
-  if(ok){
-    alert("Le partage direct n'est pas disponible sur cet appareil.\n\nLe PDF a été téléchargé et le message a été copié : ajoute le PDF en pièce jointe puis colle le message (Ctrl+V) dans la conversation WhatsApp qui va s'ouvrir.");
-  } else {
-    alert("Le partage direct n'est pas disponible sur cet appareil.\n\nLe PDF a été téléchargé : ajoute-le en pièce jointe dans la conversation WhatsApp qui va s'ouvrir.");
-  }
   if(phone.length===13){
-    window.open('https://wa.me/'+phone, '_blank');
+    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg), '_blank');
   }
 };
 
