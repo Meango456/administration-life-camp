@@ -202,7 +202,15 @@ let isAdmin = false;
 
 function confirmedCount(){ return people.filter(p=>p.status==='confirmed').length; }
 function pendingCount(){ return people.filter(p=>p.status==='pending').length; }
-function occupiedCount(){ return confirmedCount() + pendingCount(); }
+
+// ✅ Une inscription "en attente" ne bloque une place que si un acompte
+// a été versé/annoncé. Sans acompte, elle ne compte pas dans les places
+// occupées : ça évite que des personnes s'inscrivent sans jamais payer
+// et empêchent d'autres personnes sérieuses de réserver leur place.
+function pendingWithDepositCount(){ return people.filter(p=>p.status==='pending' && Number(p.acompte) > 0).length; }
+function pendingNoDepositCount(){ return pendingCount() - pendingWithDepositCount(); }
+
+function occupiedCount(){ return confirmedCount() + pendingWithDepositCount(); }
 function remaining(){ return TOTAL_PLACES - occupiedCount(); }
 
 // ✅ Formatage FCFA CORRIGÉ : on n'utilise plus toLocaleString('fr-FR') car
@@ -230,7 +238,7 @@ function render(){
   const rem = remaining();
   document.getElementById('remaining').textContent = rem;
   document.getElementById('bar').style.width = Math.max(0,(rem/TOTAL_PLACES*100)) + '%';
-  document.getElementById('stats').textContent = confirmedCount()+' confirmé'+(confirmedCount()>1?'s':'')+' · '+pendingCount()+' en attente';
+  document.getElementById('stats').textContent = confirmedCount()+' confirmé'+(confirmedCount()>1?'s':'')+' · '+pendingWithDepositCount()+' en attente (avec acompte)'+(pendingNoDepositCount()>0 ? ' · '+pendingNoDepositCount()+' sans acompte (place non bloquée)' : '');
   if(isAdmin) renderList();
 }
 
@@ -252,6 +260,7 @@ function renderList(){
       +(p.date_naissance?'<div class="li-brig">Né(e) le : '+fmtDate(p.date_naissance)+'</div>':'')
       + '<div class="li-brig">Brigade : '+esc(p.brigade||'—')+(p.taille_tshirt?' · T-shirt : '+esc(p.taille_tshirt):'')+'</div>'
       +(!ok && p.acompte ? '<div class="li-acompte">💰 Acompte annoncé : '+fcfa(p.acompte)+' (reste '+fcfa(20000-p.acompte)+')</div>':'')
+      +(!ok && !p.acompte ? '<div class="li-brig" style="color:#999">— Aucun acompte : place NON bloquée</div>':'')
       +(!ok?'<div class="li-deadline">⏳ Solde à verser avant le '+DATE_LIMITE+'</div>':'')
       +'</div>'
       +'<div class="li-right"><div class="li-ref">'+p.ref+'</div>'
