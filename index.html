@@ -398,7 +398,7 @@ function waMessageConfirmed(p){
     +"📌 Référence : "+p.ref+"\n"
     +"📅 Dates : 10 au 12 septembre 2026\n"
     +"📍 Lieu : CEFCA\n"
-    +(p.brigade?"🏕️ Brigade : "+p.brigade+"\n":"")
+    +(p.brigade?"⛺ Brigade : "+p.brigade+"\n":"")
     +(p.taille_tshirt?"👕 Taille t-shirt : "+p.taille_tshirt+"\n":"")
     +"\nMontant réglé : 20 000 FCFA ✅\n\n"
     +"À très bientôt !\n"
@@ -412,7 +412,7 @@ function waMessagePending(p){
     +(p.acompte
       ? "💰 Acompte annoncé : "+fcfa(p.acompte)+"\n💳 Reste à payer : "+fcfa(20000-p.acompte)+"\n\n"
       : "")
-    +"⚠️ Il te reste à solder le paiement complet (20 000 FCFA) avant le *"+DATE_LIMITE+"*.\n"
+    +"⚠ Il te reste à solder le paiement complet (20 000 FCFA) avant le *"+DATE_LIMITE+"*.\n"
     +"Passé ce délai, ta place pourra être attribuée à quelqu'un d'autre.\n\n"
     +"📅 Dates : 10 au 12 septembre 2026\n"
     +"📍 Lieu : CEFCA\n\n"
