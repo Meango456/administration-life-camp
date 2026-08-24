@@ -54,8 +54,8 @@
   .btn-wa{background:var(--wa);border:none;color:#08331e;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
   .btn-share{background:var(--orange-clair);border:none;color:#0D0D0D;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;}
   .btn-editall{background:#333;border:1px solid #555;color:#fff;padding:7px 13px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;width:100%;}
-  .admin-bar{display:flex;gap:8px;margin-bottom:14px;}
-  .admin-bar button{flex:1;background:#1a1a1a;border:1px solid #333;color:#ccc;padding:9px;border-radius:8px;font-size:12px;font-family:inherit;cursor:pointer;}
+  .admin-bar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+  .admin-bar button{flex:1;min-width:70px;background:#1a1a1a;border:1px solid #333;color:#ccc;padding:9px 6px;border-radius:8px;font-size:11px;font-family:inherit;cursor:pointer;}
   .empty{text-align:center;color:#666;font-size:13px;padding:24px 0;}
   .status-conn{text-align:center;font-size:11px;padding:6px;color:#666;}
   .footer{padding:15px;text-align:center;font-size:11px;color:#555;border-top:1px solid #222;}
@@ -130,6 +130,7 @@
         <button onclick="filterList('all')">Tous</button>
         <button onclick="filterList('pending')">En attente</button>
         <button onclick="filterList('confirmed')">Confirmés</button>
+        <button onclick="filterList('acompte')">Acompte</button>
         <button onclick="exportCSV()">Exporter</button>
       </div>
       <div id="list"></div>
@@ -247,6 +248,7 @@ function renderList(){
   let arr = [...people];
   if(currentFilter==='pending') arr = arr.filter(p=>p.status==='pending');
   if(currentFilter==='confirmed') arr = arr.filter(p=>p.status==='confirmed');
+  if(currentFilter==='acompte') arr = arr.filter(p=>Number(p.acompte) > 0);
   const order = {pending:0,confirmed:1};
   arr.sort((a,b)=> (order[a.status]-order[b.status]) || (a.id-b.id));
   if(arr.length===0){ box.innerHTML = '<div class="empty">Aucune inscription.</div>'; return; }
