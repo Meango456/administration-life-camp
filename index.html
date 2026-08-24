@@ -248,7 +248,7 @@ function renderList(){
   let arr = [...people];
   if(currentFilter==='pending') arr = arr.filter(p=>p.status==='pending');
   if(currentFilter==='confirmed') arr = arr.filter(p=>p.status==='confirmed');
-  if(currentFilter==='acompte') arr = arr.filter(p=>Number(p.acompte) > 0);
+  if(currentFilter==='acompte') arr = arr.filter(p=>p.status==='pending' && Number(p.acompte) > 0);
   const order = {pending:0,confirmed:1};
   arr.sort((a,b)=> (order[a.status]-order[b.status]) || (a.id-b.id));
   if(arr.length===0){ box.innerHTML = '<div class="empty">Aucune inscription.</div>'; return; }
